@@ -26,9 +26,9 @@ tauri-plugin-log = "2.0.0-rc"
 tauri-plugin-theme = "2.1.1"
 tauri-plugin-store = "2.0.0-rc"
 tauri-plugin-window-state = "2.0.0-rc"
-rercon = "1.2.0"
 anyhow = "1.0.89"
 rcon = { version = "0.6.0", features = ["rt-async-std"] }
+gamedig = { version = "0.5.1", features = ["tls", "serde"] }
 
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
 tauri-plugin-single-instance = "2"
