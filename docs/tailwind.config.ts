@@ -1,9 +1,15 @@
 import type { Config } from 'tailwindcss';
+import flowbitePlugin from 'flowbite/plugin';
+import flowbiteTypography from 'flowbite-typography';
+import yaasmThem from '../tailwind.config';
 
 export default {
 	content: ['./src/**/*.{html,js}'],
 	theme: {
-		extend: {}
+		extend: {
+			...yaasmThem.theme.extend
+		}
 	},
-	plugins: []
+	darkMode: ['selector', '[data-theme=dark]'],
+	plugins: [flowbiteTypography, flowbitePlugin]
 } satisfies Config;

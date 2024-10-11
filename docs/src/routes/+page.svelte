@@ -1,2 +1,4 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="text-center content-center place-content-center container mx-auto">
+	<h1>Coming soon...</h1>
+	<p>YAASM is still in development</p>
+</div>

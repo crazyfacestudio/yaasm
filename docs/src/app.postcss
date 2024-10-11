@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	html,
+	body {
+		min-height: 100%;
+		z-index: -2;
+		color: #fff;
+		@apply text-gray-200 bg-yaasm-800;
+	}
+
+	h1 {
+		@apply text-3xl font-semibold;
+		text-shadow: 1px 1px 1px theme(colors.gray.900);
+	}
+	h2 {
+		@apply text-2xl font-semibold;
+		text-shadow: 1px 1px 2px theme(colors.gray.900);
+	}
+	h3 {
+		@apply text-xl font-semibold;
+		text-shadow: 1px 1px 2px theme(colors.gray.900);
+	}
+}
