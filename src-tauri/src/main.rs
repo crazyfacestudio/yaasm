@@ -7,7 +7,6 @@ mod types;
 use commands::{greet, rcon_command};
 use serde_json::json;
 use specta_typescript::Typescript;
-use tauri::Wry;
 use tauri_plugin_store::StoreExt;
 use tauri_specta::*;
 use types::ServerConfig;
