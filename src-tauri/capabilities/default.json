@@ -7,6 +7,9 @@
     ],
     "permissions": [
         "core:default",
-        "theme:default"
+        "theme:default",
+        "store:default",
+        "deep-link:default",
+        "updater:default"
     ]
 }
