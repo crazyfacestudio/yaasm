@@ -21,7 +21,7 @@ tauri-build = { version = "2.0.0-rc.12", features = [] }
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 log = "0.4"
-tauri = { version = "2.0.0-rc.15", features = ["specta"] }
+tauri = { version = "2.0.0", features = ["specta"] }
 tauri-plugin-log = "2.0.0-rc"
 tauri-plugin-theme = "2.1.1"
 tauri-plugin-store = "2"
