@@ -1,34 +1,24 @@
 {
-    "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+    "$schema": "https://schema.tauri.app/config/2.0.0",
     "productName": "yaasm",
-    "version": "0.1.0-alpha1",
-    "identifier": "com.yaasm.dev",
+    "version": "0.1.0",
+    "identifier": "com.crazyfacestudios.yaasm",
     "build": {
-        "frontendDist": "../build",
-        "devUrl": "http://localhost:5173",
         "beforeDevCommand": "npm run dev",
-        "beforeBuildCommand": "npm run build"
+        "devUrl": "http://localhost:1420",
+        "beforeBuildCommand": "npm run build",
+        "frontendDist": "../build"
     },
     "app": {
         "windows": [
             {
-                "title": "YAASM",
-                "width": 800,
-                "height": 600,
-                "resizable": true,
-                "fullscreen": false
+                "title": "yaasm",
+                "width": 1600,
+                "height": 1200
             }
         ],
         "security": {
-            "csp": {
-                "default-src": "'self' customprotocol: asset:",
-                "connect-src": "ipc: http://ipc.localhost",
-                "font-src": [
-                    "https://fonts.gstatic.com"
-                ],
-                "img-src": "'self' asset: http://asset.localhost blob: data:",
-                "style-src": "'unsafe-inline' 'self' https://fonts.googleapis.com"
-            }
+            "csp": null
         }
     },
     "bundle": {
@@ -40,15 +30,6 @@
             "icons/128x128@2x.png",
             "icons/icon.icns",
             "icons/icon.ico"
-        ],
-        "createUpdaterArtifacts": true
-    },
-    "plugins": {
-        "updater": {
-            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEVDM0ZFRTNGRUQyQzhGMjkKUldRcGp5enRQKzQvN0tVcWhKUUpGZEV6Qno1U2JXNUdDZWltS29KWHF6UHFMdzVvSjFBSGF5dHcK",
-            "endpoints": [
-                "https://github.com/crazyfacestudio/yaasm/releases/latest/download/latest.json"
-            ]
-        }
+        ]
     }
 }

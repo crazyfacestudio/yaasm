@@ -1,47 +1,43 @@
 [package]
-name = "app"
+name = "yaasm"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+description = "Yet Another Ark Server Manager"
+authors = ["CrazyFace Studios"]
 edition = "2021"
-rust-version = "1.71"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
-name = "app_lib"
-crate-type = ["staticlib", "cdylib", "lib"]
+name = "yaasm_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2.0.0-rc.12", features = [] }
+tauri-build = { version = "2.0.0", features = [] }
 
 [dependencies]
-serde_json = "1.0"
-serde = { version = "1.0", features = ["derive"] }
-log = "0.4"
+uuid = { version = "1.10.0", features = [
+    "v4",                # Lets you generate random UUIDs
+    "fast-rng",          # Use a faster (but still sufficiently random) RNG
+    "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
+] }
+
 tauri = { version = "2.0.0", features = ["specta"] }
-tauri-plugin-log = "2.0.0-rc"
-tauri-plugin-theme = "2.1.1"
-tauri-plugin-window-state = "2.0.0-rc"
+tauri-plugin-shell = "2.0.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri-plugin-fs = "2"
+serde_yaml = "0.9.34"
 anyhow = "1.0.89"
 rcon = { version = "0.6.0", features = ["rt-async-std"] }
 gamedig = { version = "0.5.1", features = ["tls", "serde"] }
-tauri-specta = { version = "2.0.0-rc.20", features = [
-    "derive",
-    "typescript",
-    "javascript",
-] }
+tauri-specta = { version = "2.0.0-rc.20", features = ["derive", "typescript"] }
 specta = { version = "=2.0.0-rc.20", features = ["function"] }
 specta-typescript = "0.0.7"
 specta-jsdoc = { version = "0.0.7" }
-tauri-plugin-deep-link = "2"
-tauri-plugin-fs = "2"
-serde_yaml = "0.9.34"
-
-[target."cfg(any(target_os = \"macos\", windows, target_os = \"linux\"))".dependencies]
-tauri-plugin-single-instance = { version = "2", features = ["deep-link"] }
-
-[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
-tauri-plugin-updater = "2"
+tokio = "1.40.0"
+regex = "1.11.0"
+thiserror = "1.0.64"
+[profile.release]
+panic = "abort"   # Strip expensive panic clean-up logic
+codegen-units = 1 # Compile crates one after another so the compiler can optimize better
+lto = true        # Enables link to optimizations
+opt-level = "s"   # Optimize for binary size
+strip = true      # Remove debug symbols

@@ -8,42 +8,7 @@
 		min-height: 100%;
 		z-index: -2;
 		color: #fff;
-		@apply text-gray-200 bg-yaasm-500;
-	}
-
-	/* body {
-		height: 100vh;
-		font-family: 'Moderustic', sans-serif;
-		font-weight: 400;
-		font-style: normal;
-		scrollbar-gutter: stable;
-	} */
-
-	* {
-		scrollbar-color: inherit !important;
-	}
-
-	::-webkit-scrollbar {
-		width: 0.5rem !important;
-		background-color: theme(colors.gray.600) !important;
-		color: theme(colors.gray.800) !important;
-	}
-
-	::-webkit-scrollbar-corner {
-		background-color: theme(colors.gray.600) !important;
-	}
-
-	::-webkit-scrollbar-track {
-		box-shadow: inset 0 0 6px theme(colors.gray.800) !important;
-		border-radius: 4px !important;
-	}
-
-	::-webkit-scrollbar-thumb {
-		background: linear-gradient(
-			theme(colors.primary.700),
-			theme(colors.primary.900)
-		) !important;
-		border-radius: 4px !important;
+		@apply text-gray-50 bg-yaasm-100;
 	}
 
 	h1 {
@@ -57,5 +22,16 @@
 	h3 {
 		@apply text-xl font-semibold;
 		text-shadow: 1px 1px 2px theme(colors.gray.900);
+	}
+
+	.btn-alert {
+		@apply text-white bg-alert hover:bg-alert-light focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2;
+	}
+
+	.btn-primary {
+		@apply text-white bg-primary hover:bg-primary-light focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2;
+	}
+	.btn-secondary {
+		@apply text-white bg-secondary hover:bg-secondary-light focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2;
 	}
 }
