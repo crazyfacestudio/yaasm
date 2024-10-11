@@ -1,0 +1,6 @@
+# Package Managers
+package-lock.json
+yarn.lock
+src-tauri/target
+.vscode
+.svelte-kit
