@@ -17,8 +17,8 @@
         "@sveltejs/adapter-static": "^3.0.5",
         "@sveltejs/kit": "^2.5.28",
         "@sveltejs/vite-plugin-svelte": "^4.0.0-next.7",
-        "@tauri-apps/api": "^2.0.0-rc.5",
-        "@tauri-apps/cli": "^2.0.0-rc.16",
+        "@tauri-apps/api": "^2.0.2",
+        "@tauri-apps/cli": "^2.0.2",
         "@tauri-apps/plugin-window-state": "github:tauri-apps/tauri-plugin-window-state#v2",
         "@types/eslint": "^9.6.0",
         "autoprefixer": "^10.4.20",
@@ -43,7 +43,7 @@
     "type": "module",
     "dependencies": {
         "@tauri-apps/plugin-deep-link": "^2.0.0",
-        "@tauri-apps/plugin-store": "^2.0.0",
+        "@tauri-apps/plugin-fs": "^2.0.0",
         "@tauri-apps/plugin-updater": "^2.0.0"
     },
     "overrides": {

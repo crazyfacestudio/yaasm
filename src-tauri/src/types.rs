@@ -54,17 +54,29 @@ pub struct AppConfig {
 }
 
 impl AppConfig {
+    #[allow(unused)]
     pub fn new(servers: Vec<ServerConfig>, nitrado_keys: Vec<NitradoKey>) -> Self {
         Self {
             servers,
             nitrado_keys,
         }
     }
+    #[allow(unused)]
     pub fn servers(&self) -> &Vec<ServerConfig> {
         &self.servers
     }
-
+    #[allow(unused)]
     pub fn nitrado_keys(&self) -> &Vec<NitradoKey> {
         &self.nitrado_keys
+    }
+}
+
+impl Default for AppConfig {
+    fn default() -> Self {
+        // Return a default instance of AppConfig
+        AppConfig {
+            servers: Vec::new(),
+            nitrado_keys: Vec::new(),
+        }
     }
 }

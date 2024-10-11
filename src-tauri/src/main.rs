@@ -4,12 +4,15 @@ mod commands;
 mod events;
 mod types;
 
+use std::io::Write;
+use std::path;
+
 use commands::{greet, rcon_command};
-use serde_json::json;
 use specta_typescript::Typescript;
-use tauri::Wry;
-use tauri_plugin_store::StoreExt;
+use tauri_plugin_fs::FsExt;
+use tauri_plugin_fs::OpenOptions;
 use tauri_specta::*;
+use types::AppConfig;
 use types::ServerConfig;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -34,30 +37,43 @@ fn main() {
     let mut ctx = tauri::generate_context!();
 
     tauri::Builder::default()
+        .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_deep_link::init())
-        .plugin(tauri_plugin_store::Builder::new().build())
         // .plugin(tauri_plugin_single_instance::init())
         .plugin(tauri_plugin_theme::init(ctx.config_mut()))
         // .plugin(tauri_plugin_window_state::Builder::default().build())
         // .plugin(tauri_plugin_store::Builder::default().build())
         .setup(|app| {
-            let store = app.handle().store_builder("store.bin").build();
+            let scope = app.fs_scope();
+            let fs = app.fs();
 
-            let value = store.get("servers");
-            match value {
-                Some(v) => {
-                    let _servers: Vec<ServerConfig> =
-                        serde_json::from_value::<Vec<ServerConfig>>(v).unwrap();
-                    // app.manage(servers);
+            let config_path_str = format!(
+                "{}/config.yaml",
+                tauri::path::BaseDirectory::AppData.variable()
+            );
+            let config_path = path::Path::new(&config_path_str);
+
+            scope.allow_file(config_path);
+
+            match fs.read_to_string(config_path) {
+                Ok(v) => {
+                    let _config: AppConfig = serde_yaml::from_str(&v).unwrap();
                 }
-                None => {
-                    let servers: Vec<ServerConfig> = vec![];
-                    store.set("servers", json!(servers));
-                    store.save()?;
-                    // app.manage(servers);
+                Err(_) => {
+                    let config: AppConfig = AppConfig::default();
+
+                    let opts = OpenOptions::new();
+
+                    let mut new_config = fs
+                        .open(config_path, opts)
+                        .expect("Failed to create config file");
+
+                    new_config
+                        .write_all(serde_yaml::to_string(&config).unwrap().as_bytes())
+                        .expect("Failed to write config file");
                 }
-            }
+            };
 
             Ok(())
         })

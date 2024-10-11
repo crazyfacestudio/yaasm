@@ -1,13 +1,15 @@
 {
-	"$schema": "../gen/schemas/desktop-schema.json",
-	"identifier": "default",
-	"description": "enables the default permissions",
-	"windows": ["main"],
-	"permissions": [
-		"core:default",
-		"theme:default",
-		"store:default",
-		"deep-link:default",
-		"updater:default"
-	]
+    "$schema": "../gen/schemas/desktop-schema.json",
+    "identifier": "default",
+    "description": "enables the default permissions",
+    "windows": [
+        "main"
+    ],
+    "permissions": [
+        "core:default",
+        "theme:default",
+        "deep-link:default",
+        "updater:default",
+        "fs:default"
+    ]
 }
