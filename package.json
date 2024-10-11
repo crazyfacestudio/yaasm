@@ -48,10 +48,11 @@
     },
     "overrides": {
         "@sveltejs/adapter-static": {
-            "@sveltejs/kit": "2.6.4"
+            "@sveltejs/kit": "2.6.4",
+            "cookie": "0.7.0"
         },
         "@sveltejs/kit": {
-            "cookie": "1.0.0"
+            "cookie": "0.7.0"
         }
     }
 }
